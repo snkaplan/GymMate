@@ -16,6 +16,7 @@ import com.gym.gymmate.core.data.util.NetworkMonitor
 import com.gym.gymmate.core.design.ui.TrackDisposableJank
 import com.gym.gymmate.feature.home.HomeNavigationRoute
 import com.gym.gymmate.feature.home.navigateToHome
+import com.gym.gymmate.feature.profile.navigateToProfile
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
@@ -70,6 +71,7 @@ class MainAppState(
 
         when (topLevelDestination) {
             TopLevelDestinations.HOME -> navController.navigateToHome(topLevelNavOptions)
+            TopLevelDestinations.PROFILE -> navController.navigateToProfile(topLevelNavOptions)
         }
     }
 

@@ -11,6 +11,8 @@ import com.gym.gymmate.feature.home.navigateToHome
 import com.gym.gymmate.feature.login.LoginNavigationRoute
 import com.gym.gymmate.feature.login.loginScreen
 import com.gym.gymmate.feature.login.navigateLogin
+import com.gym.gymmate.feature.profile.navigateToProfile
+import com.gym.gymmate.feature.profile.profileScreen
 import com.gym.gymmate.feature.splash.SplashNavigationRoute
 import com.gym.gymmate.feature.splash.splashScreen
 
@@ -45,7 +47,9 @@ fun GymMateNavHost(
                 )
             }
         )
-        homeScreen()
+        homeScreen(navigateToProfile = {
+            navController.navigateToProfile()
+        })
         loginScreen(navigateToHome = {
             navController.navigateToHome(
                 navOptions = navOptions {
@@ -55,5 +59,6 @@ fun GymMateNavHost(
                 },
             )
         })
+        profileScreen()
     }
 }

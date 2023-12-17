@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">GymMate</string>
     <string name="no_connection">There is no internet connection :/</string>
-    <string name="home_title">HOME</string>
+    <string name="home_title">Home</string>
+    <string name="profile_Title">Profile</string>
+    <string name="hello_user">Hello %1s</string>
+    <string name="categories">Categories</string>
+    <string name="today_is">Today is %1s</string>
+    <string name="lets_workout">Let\'s Workout</string>
 </resources>

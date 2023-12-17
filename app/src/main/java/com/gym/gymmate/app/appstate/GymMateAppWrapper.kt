@@ -1,6 +1,8 @@
 package com.gym.gymmate.app.appstate
 
+import android.icu.text.CaseMap.Title
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.background
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -16,10 +18,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -29,10 +34,12 @@ import com.gym.gymmate.app.navigation.TopLevelDestinations
 import com.gym.gymmate.core.data.util.NetworkMonitor
 import com.gym.gymmate.core.design.animation.slideIn
 import com.gym.gymmate.core.design.animation.slideOut
+import com.gym.gymmate.core.design.components.BoldLabelMedium
 import com.gym.gymmate.core.design.components.GymMateScaffold
+import com.gym.gymmate.core.design.components.TitleMedium
 import com.gym.gymmate.core.design.icon.Icon
 
-@OptIn(ExperimentalComposeUiApi::class,)
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun GymMateAppWrapper(
     networkMonitor: NetworkMonitor,
@@ -106,14 +113,14 @@ internal fun AppNavBar(
     onNavigateToDestination: (TopLevelDestinations) -> Unit,
     currentDestination: NavDestination?,
 ) {
-    NavigationBar {
+    NavigationBar(containerColor = Color.White, modifier = Modifier.shadow(elevation = 3.dp)) {
         destinations.forEach { destination ->
             val selected = currentDestination.isTopLevelDestinationInHierarchy(destination)
             NavigationBarItem(
                 selected = selected,
                 onClick = { onNavigateToDestination(destination) },
                 label = {
-                    Text(text = stringResource(id = destination.titleTextId))
+                    TitleMedium(text = stringResource(id = destination.titleTextId))
                 },
                 icon = {
                     val icon = if (selected) {
